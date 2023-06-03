@@ -5,14 +5,14 @@
 */
 
 var invertTree = function(root) {
-  if(root == null) return root
+  if (!root) return null
+
+  const temp = root.left
+  root.left = root.right
+  root.right = temp
 
   invertTree(root.left)
   invertTree(root.right)
 
-  const curr = root.left
-  root.left = root.right
-  root.right = curr
-  console.log(root)
   return root
 };

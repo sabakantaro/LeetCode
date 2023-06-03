@@ -37,17 +37,29 @@ n == image[i].length
 
 */
 
-/**
- * @param {number[][]} image
- * @param {number} sr
- * @param {number} sc
- * @param {number} color
- * @return {number[][]}
- */
+// var floodFill = function (image, sr, sc, color) {
+//   if (image[sr][sc] === color) return image;
+//   fill(image, sr, sc, color, image[sr][sc]);
+//   return image;
+// };
+
+// var fill = function (image, sr, sc, color, curr) {
+//   if (sr < 0 || sr >= image.length || sc < 0 || sc >= image[0].length)
+//     return image;
+//   if (curr !== image[sr][sc]) return image;
+
+//   image[sr][sc] = color;
+
+//   fill(image, sr - 1, sc, color, curr);
+//   fill(image, sr + 1, sc, color, curr);
+//   fill(image, sr, sc - 1, color, curr);
+//   fill(image, sr, sc + 1, color, curr);
+// };
+
 var floodFill = function (image, sr, sc, color) {
   const origin = image[sr][sc];
 
-  function recursive(image, sr, sc) {
+  function fill(image, sr, sc) {
     if (
       sr < 0 ||
       sr > image.length - 1 ||
@@ -58,14 +70,16 @@ var floodFill = function (image, sr, sc, color) {
     ) {
       return image;
     }
+
     image[sr][sc] = color;
 
-    recursive(image, sr + 1, sc);
-    recursive(image, sr - 1, sc);
-    recursive(image, sr, sc + 1);
-    recursive(image, sr, sc - 1);
+    fill(image, sr + 1, sc);
+    fill(image, sr - 1, sc);
+    fill(image, sr, sc + 1);
+    fill(image, sr, sc - 1);
 
     return image;
   }
-  return recursive(image, sr, sc);
+
+  return fill(image, sr, sc);
 };
