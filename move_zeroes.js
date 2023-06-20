@@ -39,21 +39,44 @@ Follow up: Could you minimize the total number of operations done
 //   return nums;
 // }
 
-var moveZeroes = function (nums) {
-  let left = 0;
-  let right = left + 1;
+// var moveZeroes = function (nums) {
+//   let left = 0;
+//   let right = left + 1;
 
-  while (right < nums.length) {
-      if (nums[left] !== 0) {
-          left++;
-          right++;
-      } else {
-          if (nums[right] !== 0) {
-              [nums[left], nums[right]] = [nums[right], nums[left]];
-              left++;
-          }
-          right++;
-      }
+//   while (right < nums.length) {
+//     if (nums[left] !== 0) {
+//       left++;
+//       right++;
+//     } else {
+//       if (nums[right] !== 0) {
+//         [nums[left], nums[right]] = [nums[right], nums[left]];
+//         left++;
+//       }
+//       right++;
+//     }
+//   }
+//   return nums;
+// };
+
+let moveZeroes = function (nums) {
+  if (nums.length === 1) return nums;
+
+  let left = 0;
+  let right = left + 0;
+
+  while (nums.length > right) {
+    if (nums[left] === 0 && nums[right] === 0) {
+      right++;
+    } else if (nums[left] === 0) {
+      let temp = nums[left];
+      nums[left] = nums[right];
+      nums[right] = temp;
+      left++;
+      right++;
+    } else {
+      left++;
+      right++;
+    }
   }
-  return nums
+  return nums;
 };
