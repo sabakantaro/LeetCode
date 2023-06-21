@@ -41,3 +41,23 @@ var missingNumber = function (nums) {
 
   return expectedSum - sum;
 };
+
+// TypeScript
+
+// function missingNumber(nums: number[]): number {
+//   let n: number = nums.length
+//   let expected: number = (n * (n + 1)) / 2
+//   let sum: number = nums.reduce((accu, curr): number => accu + curr)
+
+//   return expected - sum
+// };
+
+
+// Ruby
+
+// def missing_number(nums)
+//     n = nums.length
+//     expected = (n * (n + 1)) / 2
+//     sum = nums.sum
+//     expected - sum
+// end
