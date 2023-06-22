@@ -27,14 +27,30 @@ Constraints:
 nums is sorted in a strictly increasing order.
 */
 
+// var sortedArrayToBST = function (nums) {
+//   if (!nums.length) return null;
+
+//   let mid = Math.floor(nums.length / 2);
+//   let node = new TreeNode(nums[mid]);
+
+//   node.left = sortedArrayToBST(nums.slice(0, mid));
+//   node.right = sortedArrayToBST(nums.slice(mid + 1));
+
+//   return node;
+// };
+
 var sortedArrayToBST = function (nums) {
-  if (!nums.length) return null;
+  function recursive(left, right) {
+    if (left > right) return null;
 
-  let mid = Math.floor(nums.length / 2);
-  let node = new TreeNode(nums[mid]);
+    const mid = Math.floor((left + right) / 2);
+    const root = new TreeNode(nums[mid]);
 
-  node.left = sortedArrayToBST(nums.slice(0, mid));
-  node.right = sortedArrayToBST(nums.slice(mid + 1));
+    root.left = recursive(left, mid - 1);
+    root.right = recursive(mid + 1, right);
 
-  return node;
+    return root;
+  }
+
+  return recursive(0, nums.length - 1);
 };
