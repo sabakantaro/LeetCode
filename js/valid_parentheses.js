@@ -26,15 +26,26 @@ var isValid = function (s) {
   if (s.length === 1) return false;
   let stack = [];
   for (let c of s) {
-    if (c === "(") {
-      stack.push(")");
-    } else if (c === "[") {
-      stack.push("]");
-    } else if (c === "{") {
-      stack.push("}");
+    if (c === '(') {
+      stack.push(')');
+    } else if (c === '[') {
+      stack.push(']');
+    } else if (c === '{') {
+      stack.push('}');
     } else if (stack.pop() !== c) {
       return false;
     }
   }
   return !stack.length;
 };
+
+// var isValid = function (s) {
+//   let arr = [];
+//   for (let bracket of s) {
+//     if (bracket === '{') arr.push('}');
+//     else if (bracket === '(') arr.push(')');
+//     else if (bracket === '[') arr.push(']');
+//     else if (bracket !== arr.pop()) return false;
+//   }
+//   return arr.length > 0 ? false : true;
+// };
