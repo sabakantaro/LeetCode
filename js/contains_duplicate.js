@@ -22,6 +22,22 @@ Constraints:
 -109 <= nums[i] <= 109
 */
 
+// var containsDuplicate = function (nums) {
+//   let hash = {};
+//   for (let num of nums) {
+//     if (!hash[num]) {
+//       hash[num] = 1;
+//     } else {
+//       hash[num] += 1;
+//     }
+//   }
+
+//   for (let num of Object.values(hash)) {
+//     if (num > 1) return true;
+//   }
+//   return false;
+// };
+
 var containsDuplicate = function (nums) {
   let hash = {};
   for (let num of nums) {
@@ -31,9 +47,8 @@ var containsDuplicate = function (nums) {
       hash[num] += 1;
     }
   }
-
-  for (let num of Object.values(hash)) {
-    if (num > 1) return true;
+  for (let key in hash) {
+    if (hash[key] > 1) return true;
   }
   return false;
 };
