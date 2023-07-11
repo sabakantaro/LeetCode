@@ -32,20 +32,20 @@ Follow up: Can you solve it in O(n) time and O(1) space?
 */
 var backspaceCompare = function (s, t) {
   let newS = [];
-  for (let char of s) {
-    if (char === '#') {
+  for (let c of s) {
+    if (c === '#') {
       newS && newS.pop();
     } else {
-      newS.push(char);
+      newS.push(c);
     }
   }
 
   let newT = [];
-  for (let char of t) {
-    if (char === '#') {
+  for (let c of t) {
+    if (c === '#') {
       newT && newT.pop();
     } else {
-      newT.push(char);
+      newT.push(c);
     }
   }
   return newS.join('') === newT.join('');
