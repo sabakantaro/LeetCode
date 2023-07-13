@@ -24,7 +24,7 @@
 var singleNumber = function (nums) {
   let uniq = 0;
   for (let i = 0; i < nums.length; i++) {
-    uniq = uniq ^ nums[i]; // XOR operator
+    uniq ^= nums[i]; // If the same number is XOR'd, it will cancel out to 0
   }
   return uniq;
 };
