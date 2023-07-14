@@ -43,23 +43,40 @@ var isSymmetric = function (root) {
   return result;
 };
 
+// version 2
+
+// var isSymmetric = function (root) {
+//   let result = true;
+
+//   function dfs(left, right) {
+//     if (!left && !right) return (result = true);
+//     if ((!left && right) || (left && !right)) return (result = false);
+//     if (left && right && left.val !== right.val) return (result = false);
+
+//     return dfs(left.left, right.right) && dfs(left.right, right.left);
+//   }
+
+//   dfs(root.left, root.right);
+//   return result;
+// };
+
 // iterative
 
-var isSymmetric_ = function(root) {
+var isSymmetric_ = function (root) {
   let result = true;
   let que = [root.left, root.right];
 
   while (que.length > 0) {
-      let left = que.shift();
-      let right = que.shift();
+    let left = que.shift();
+    let right = que.shift();
 
-      if (!left && !right) continue;
-      if ((!left && right || left && !right) || left.val !== right.val) {
-          result = false;
-      }
+    if (!left && !right) continue;
+    if ((!left && right) || (left && !right) || left.val !== right.val) {
+      result = false;
+    }
 
-      que.push(left.left, right.right);
-      que.push(left.right, right.left);
+    que.push(left.left, right.right);
+    que.push(left.right, right.left);
   }
   return result;
 };
