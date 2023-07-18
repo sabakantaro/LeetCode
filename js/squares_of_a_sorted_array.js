@@ -25,19 +25,43 @@ nums is sorted in non-decreasing order.
 Follow up: Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
 */
 
+// var sortedSquares = function (nums) {
+//   let arr = [];
+//   for (let n of nums) {
+//     arr.push(Math.pow(n, 2));
+//   }
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] > arr[j]) {
+//         let temp = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//       }
+//     }
+//   }
+//   return arr;
+// };
+
 var sortedSquares = function (nums) {
-  let arr = [];
-  for (let n of nums) {
-    arr.push(Math.pow(n, 2));
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      nums[i] = Math.abs(nums[i]);
+    }
   }
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] > arr[j]) {
-        let temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] > nums[j]) {
+        let temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
       }
     }
   }
-  return arr;
+
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] *= nums[i];
+  }
+
+  return nums;
 };
