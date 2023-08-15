@@ -5,7 +5,6 @@ function isPalindrome(x: number): boolean {
   while (x > reversedHalf) {
     reversedHalf = reversedHalf * 10 + x % 10;
     x = Math.floor(x / 10);
-    console.log(reversedHalf, x)
   }
 
   return x === reversedHalf || x === Math.floor(reversedHalf / 10);
