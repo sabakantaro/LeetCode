@@ -49,3 +49,21 @@ const isAnagram_ = (s: string, t: string): boolean => {
 
   return true;
 };
+
+function isAnagram_2(s: string, t: string): boolean {
+  if (s.length !== t.length) return false;
+  const hash = {}
+  for (let i = 0; i < s.length; i++) {
+    hash[s[i]] = (hash[s[i]] || 0) + 1;
+  }
+
+  for (let i = 0; i < t.length; i++) {
+    if (!hash[t[i]] || hash[t[i]] == 0) {
+      return false;
+    } else {
+      hash[t[i]]--
+    }
+  }
+
+  return true
+};
