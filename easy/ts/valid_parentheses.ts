@@ -18,3 +18,22 @@ function isValid(s: string): boolean {
 
   return stack.length == 0
 }
+
+function isValid2(s: string): boolean {
+  const closingStack: string[] = [];
+  const openingBrackets = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  }
+  for (const str of s) {
+    if (openingBrackets[str]) {
+      closingStack.push(openingBrackets[str]);
+    } else {
+      const expectedClosing = closingStack.pop();
+      if (expectedClosing !== str) return false;
+    }
+  }
+
+  return closingStack.length === 0;
+}
