@@ -9,6 +9,7 @@ class TreeNode {
   }
 }
 
+// Recursive
 function invertTree(root: TreeNode | null): TreeNode | null {
   if (!root) return null
 
@@ -19,4 +20,27 @@ function invertTree(root: TreeNode | null): TreeNode | null {
   root.left = right
 
   return root
+};
+
+// Iterative
+function invertTree2(root: TreeNode | null): TreeNode | null {
+  const queue = [root];
+  while (queue.length) {
+    const curr = queue.pop();
+
+    if (curr) {
+      const left = curr.left;
+      curr.left = curr.right;
+      curr.right = left;
+
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+  }
+
+  return root;
 };
