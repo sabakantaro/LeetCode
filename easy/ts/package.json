@@ -1,0 +1,14 @@
+{
+  "name": "leetcode-ts",
+  "version": "1.0.0",
+  "description": "LeetCode solutions in TypeScript",
+  "scripts": {
+    "test": "ts-node",
+    "test:all": "find test -name '*.test.ts' -exec ts-node {} \\;"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "@types/node": "^20.0.0"
+  }
+}
